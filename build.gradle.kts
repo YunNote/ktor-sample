@@ -1,5 +1,8 @@
 val kotlin_version: String by project
 val logback_version: String by project
+val ktorm_version = "4.0.0"
+val mysql_version = "8.0.33"
+val hikari_version = "5.1.0"
 
 plugins {
     kotlin("jvm") version "2.0.0"
@@ -8,6 +11,7 @@ plugins {
 
 group = "com.yunnote"
 version = "0.0.1"
+
 
 application {
     mainClass.set("com.yunnote.ApplicationKt")
@@ -21,6 +25,14 @@ repositories {
 }
 
 dependencies {
+
+    implementation("org.ktorm:ktorm-core:$ktorm_version")
+    implementation("org.ktorm:ktorm-jackson:$ktorm_version")
+    implementation("org.ktorm:ktorm-support-mysql:$ktorm_version")
+
+    implementation("mysql:mysql-connector-java:$mysql_version")
+    implementation("com.zaxxer:HikariCP:$hikari_version")
+
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
