@@ -7,6 +7,7 @@ val hikari_version = "5.1.0"
 plugins {
     kotlin("jvm") version "2.0.0"
     id("io.ktor.plugin") version "2.3.11"
+    kotlin("plugin.serialization") version "2.0.0"
 }
 
 group = "com.yunnote"
@@ -32,6 +33,9 @@ dependencies {
 
     implementation("mysql:mysql-connector-java:$mysql_version")
     implementation("com.zaxxer:HikariCP:$hikari_version")
+
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.11")
+    implementation("io.ktor:ktor-server-content-negotiation:2.3.11")
 
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")

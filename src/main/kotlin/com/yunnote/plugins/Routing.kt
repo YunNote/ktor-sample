@@ -16,6 +16,11 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
 
+        get("/json-test") {
+
+            call.respond( JsonSample("YunNote", "최윤진", Priority.High)
+            )
+        }
 
         get("/test") {
             val database = Database.connect(
