@@ -15,10 +15,5 @@ fun main() {
 
 fun Application.module() {
     configureRouting()
-    install(ContentNegotiation){
-        json(Json {
-            prettyPrint = true
-            isLenient = true
-        })
-    }
+    serialization()
 }
