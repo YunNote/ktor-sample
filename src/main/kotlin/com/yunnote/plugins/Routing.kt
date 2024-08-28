@@ -18,7 +18,7 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
 
-        get("/test") {
+        get("/test/{hello}") {
 
             // queryParameter를 받는 방법 1
             val let: Create.Request = call.parameters.let { params ->
@@ -30,8 +30,9 @@ fun Application.configureRouting() {
 
             // queryParameter를 받는 방법 2
             val name: String? = call.request.queryParameters["name"];
-            val age: String? = call.request.queryParameters["age"];
+            val age: List<String>? = call.request.queryParameters.getAll("age");
 
+            println(age)
 
             // queryParameter를 받는 방법 3
             // call.parameters에 대한 확장함수를 만들어 받을 수 있게 제공하는법뿐
