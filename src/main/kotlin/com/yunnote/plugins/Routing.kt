@@ -1,5 +1,6 @@
 package com.yunnote.plugins
 
+import com.yunnote.dto.Create
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.http.*
@@ -19,9 +20,24 @@ fun Application.configureRouting() {
 
         get("/test") {
 
+            // queryParameter를 받는 방법 1
+            val let: Create.Request = call.parameters.let { params ->
+                Create.Request(
+                    name = params["name"] as String,
+                    age = params["age"]?.toLongOrNull() ?: 0
+                )
+            }
+
+            // queryParameter를 받는 방법 2
+            val name: String? = call.request.queryParameters["name"];
+            val age: String? = call.request.queryParameters["age"];
 
 
-            call.respond(Test("최윤진", 32))
+            // queryParameter를 받는 방법 3
+            // call.parameters에 대한 확장함수를 만들어 받을 수 있게 제공하는법뿐
+
+
+            call.respond("awef")
         }
     }
 }
